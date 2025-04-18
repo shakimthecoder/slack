@@ -1,5 +1,6 @@
 import { Card, CardHeader, CardDescription, CardContent, CardTitle } from '../../../components/ui/card';
-import { FcGoogle } from "react-icons/fc"
+import { FcGoogle } from "react-icons/fc";
+import { FaGithub } from "react-icons/fa";
 import { Input } from '../../../components/ui/input';
 import { Button } from '../../../components/ui/button';
 import { Separator } from '../../../components/ui/separator';
@@ -48,8 +49,17 @@ export const SignUpCard = () => {
              variant="outline"
              size="lg"
              className="w-full relative">
-                <FcGoogle />
+                <FcGoogle className="size-5 absolute top-2.5 left-2.5"/>
                 Continue with Google
+                </Button>
+            <Button
+             disabled={false}
+             onClick={() => {}}
+             variant="outline"
+             size="lg"
+             className="w-full relative">
+                <FaGithub className="size-5 absolute top-2.5 left-2.5"/>
+                Continue with Github
                 </Button>
           </div>
         </CardContent>
