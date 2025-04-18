@@ -40,6 +40,14 @@ export const SignUpCard = () => {
               </Button>
             </form>
          <Separator />
+          <div className="flex flex-col gap-y-2.5">
+            <Button
+             disabled={false}
+             onClick={() => {}}
+             variant="outline"
+             size="lg"
+             className="w-full relative">Continue with Google</Button>
+          </div>
         </CardContent>
        </Card>
     )
