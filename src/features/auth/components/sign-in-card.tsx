@@ -16,9 +16,23 @@ export const SignInCard = ({ setState }: SignInCardProps) => {
     const { signIn } = useAuthActions();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [pending, setPending] = useState(false);
+    const [error, setError] = useState<string | null>("");
+
+    const onPasswordSignIn = (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        setPending(true);
+        signIn("password", { email, password, flow: "signIn" })
+        .catch((error) => {
+          setError(error.message);
+        })
+        .finally(() => setPending(false));
+    }
 
     const handleProviderSignIn = (value: "github" | "google") => {
-      signIn(value);
+    setPending(true);
+    signIn(value)
+    .finally(() => setPending(false));
     }
     return (
        <Card className="w-full h-full p-8">
