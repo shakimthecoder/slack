@@ -1,5 +1,6 @@
 import { Card, CardHeader, CardDescription, CardContent, CardTitle } from '../../../components/ui/card';
 import { Input } from '../../../components/ui/input';
+import { Button } from '../../../components/ui/button';
 
 export const SignUpCard = () => {
     return (
@@ -28,6 +29,13 @@ export const SignUpCard = () => {
               placeholder="Password"
               required
               />
+              <Button
+               type="submit"
+               className="w-full"
+               size="lg"
+               disabled={false}>
+                Continue
+              </Button>
             </form>
 
         </CardContent>
