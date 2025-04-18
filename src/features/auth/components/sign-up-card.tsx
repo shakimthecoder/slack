@@ -1,4 +1,5 @@
 import { Card, CardHeader, CardDescription, CardContent, CardTitle } from '../../../components/ui/card';
+import { FcGoogle } from "react-icons/fc"
 import { Input } from '../../../components/ui/input';
 import { Button } from '../../../components/ui/button';
 import { Separator } from '../../../components/ui/separator';
@@ -46,7 +47,10 @@ export const SignUpCard = () => {
              onClick={() => {}}
              variant="outline"
              size="lg"
-             className="w-full relative">Continue with Google</Button>
+             className="w-full relative">
+                <FcGoogle />
+                Continue with Google
+                </Button>
           </div>
         </CardContent>
        </Card>
