@@ -5,12 +5,17 @@ import { Input } from '../../../components/ui/input';
 import { Button } from '../../../components/ui/button';
 import { Separator } from '../../../components/ui/separator';
 import { SignInFlow } from '../types';
+import { useState } from 'react';
 
 interface SignUpCardProps {
     setState: (state: SignInFlow) => void;
 }
 
 export const SignUpCard = ({ setState }: SignUpCardProps) => {
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [confirmPassword, setConfirmPassword] = useState("")
+
     return (
        <Card className="w-full h-full p-8">
         <CardHeader className="pt-0 px-0"> 
@@ -24,24 +29,24 @@ export const SignUpCard = ({ setState }: SignUpCardProps) => {
             <form className="space-y-2.5">
             <Input 
              disabled={false}
-             onChange={() => {}}
-             value=""
+             onChange={(e) => setEmail(e.target.value)}
+             value={email}
              type="email"
              placeholder="Email"
              required
              />
              <Input 
               disabled={false}
-              onChange={() => {}}
-              value=""
+              onChange={(e) => setPassword(e.target.value)}
+              value={password}
               type="password"
               placeholder="Password"
               required
               />
               <Input 
               disabled={false}
-              onChange={() => {}}
-              value=""
+              onChange={(e) => setConfirmPassword(e.target.value)}
+              value={confirmPassword}
               type="password"
               placeholder="Confirm Password"
               required
@@ -75,7 +80,7 @@ export const SignUpCard = ({ setState }: SignUpCardProps) => {
                 Continue with Github
                 </Button>
             <p className="text-xs text-muted-foreground">
-                Already have an account? <span onClick={() => setState("signIn")}className="text-sky-500 hover:underline cursor-pointer">Sign Up</span>
+                Already have an account? <span onClick={() => setState("signIn")}className="text-sky-500 hover:underline cursor-pointer">Sign In</span>
             </p>
           </div>
         </CardContent>
