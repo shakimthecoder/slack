@@ -1,5 +1,9 @@
+import { Card } from '../../../components/ui/card';
+
 export const SignUpCard = () => {
     return (
-        <div>Sign Up</div>
+       <Card className="w-full h-full p-8">
+        Sign Up
+       </Card>
     )
 }
