@@ -36,7 +36,7 @@ export const SignInCard = ({ setState }: SignInCardProps) => {
              <Input 
               disabled={false}
               onChange={(e) => setPassword(e.target.value)}
-              value=""
+              value={password}
               type="password"
               placeholder="Password"
               required
