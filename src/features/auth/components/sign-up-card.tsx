@@ -38,6 +38,14 @@ export const SignUpCard = ({ setState }: SignUpCardProps) => {
               placeholder="Password"
               required
               />
+              <Input 
+              disabled={false}
+              onChange={() => {}}
+              value=""
+              type="password"
+              placeholder="Confirm Password"
+              required
+              />
               <Button
                type="submit"
                className="w-full"
@@ -67,7 +75,7 @@ export const SignUpCard = ({ setState }: SignUpCardProps) => {
                 Continue with Github
                 </Button>
             <p className="text-xs text-muted-foreground">
-                Don't have an account? <span onClick={() => setState("signUp")}className="text-sky-500 hover:underline cursor-pointer">Sign Up</span>
+                Already have an account? <span onClick={() => setState("signIn")}className="text-sky-500 hover:underline cursor-pointer">Sign Up</span>
             </p>
           </div>
         </CardContent>

@@ -15,7 +15,7 @@ export const SignInCard = ({ setState }: SignInCardProps) => {
        <Card className="w-full h-full p-8">
         <CardHeader className="pt-0 px-0"> 
         <CardTitle>
-            Sign up
+            Sign In
         </CardTitle>
         <CardDescription> Use your email to sign up.</CardDescription>
         </CardHeader>
@@ -67,7 +67,7 @@ export const SignInCard = ({ setState }: SignInCardProps) => {
                 Continue with Github
                 </Button>
             <p className="text-xs text-muted-foreground">
-                Don't have an account? <span onClick={() => setState("signIn")}className="text-sky-500 hover:underline cursor-pointer">Sign Up</span>
+                Don't have an account? <span onClick={() => setState("signUp")}className="text-sky-500 hover:underline cursor-pointer">Sign Up</span>
             </p>
           </div>
         </CardContent>
