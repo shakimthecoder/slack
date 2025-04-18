@@ -1,10 +1,10 @@
 "use client";
 
-import Image from "next/image";
+
 import { useQuery } from "convex/react";
 import { api } from "../../../convex/_generated/api";
 
-export default function Home() {
+export default function TestPage() {
   const tasks = useQuery(api.tasks.get);
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
