@@ -1,6 +1,7 @@
 import { Card, CardHeader, CardDescription, CardContent, CardTitle } from '../../../components/ui/card';
 import { Input } from '../../../components/ui/input';
 import { Button } from '../../../components/ui/button';
+import { Separator } from '../../../components/ui/separator';
 
 export const SignUpCard = () => {
     return (
@@ -9,8 +10,9 @@ export const SignUpCard = () => {
         <CardTitle>
             Sign up
         </CardTitle>
-        </CardHeader>
         <CardDescription> Use your email to sign up.</CardDescription>
+        </CardHeader>
+        
         <CardContent className="space-y-5 px-0 pb-0">
             <form className="space-y-2.5">
             <Input 
@@ -37,7 +39,7 @@ export const SignUpCard = () => {
                 Continue
               </Button>
             </form>
-
+         <Separator />
         </CardContent>
        </Card>
     )
