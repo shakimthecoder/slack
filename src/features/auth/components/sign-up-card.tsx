@@ -61,6 +61,9 @@ export const SignUpCard = () => {
                 <FaGithub className="size-5 absolute top-2.5 left-2.5"/>
                 Continue with Github
                 </Button>
+            <p className="text-xs text-muted-foreground">
+                Don't have an account? <span className="text-sky-500 hover:underline cursor-pointer">Sign Up</span>
+            </p>
           </div>
         </CardContent>
        </Card>
