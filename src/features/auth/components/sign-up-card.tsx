@@ -1,4 +1,5 @@
 import { Card, CardHeader, CardDescription, CardContent, CardTitle } from '../../../components/ui/card';
+import { Input } from '../../../components/ui/input';
 
 export const SignUpCard = () => {
     return (
@@ -11,7 +12,14 @@ export const SignUpCard = () => {
         <CardDescription> Use your email to sign up.</CardDescription>
         <CardContent className="space-y-5 px-0 pb-0">
             <form className="space-y-2.5">
-
+            <Input 
+             disabled={false}
+             onChange={() => {}}
+             value=""
+             type="email"
+             placeholder="Email"
+             required
+             />
             </form>
 
         </CardContent>
