@@ -1,5 +1,8 @@
 "use client";
 
+import { useCurrentUser } from "../hooks/use-current-user";
+import { Loader } from "lucide-react";
+
 import {
   Avatar,
   AvatarFallback,
@@ -13,6 +16,10 @@ import {
 } from "../../../components/ui/dropdown-menu";
 
 const UserButton = () => {
+    const {isLoading, data } = useCurrentUser();
+    if(isLoading){
+        return <Loader className="size-4 animate-spin text-muted-foreground" />
+    };
   return (
     <DropdownMenu>
       <DropdownMenuTrigger className="outline-none relative">
