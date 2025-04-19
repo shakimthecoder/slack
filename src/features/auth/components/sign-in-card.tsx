@@ -7,6 +7,7 @@ import { Separator } from '../../../components/ui/separator';
 import { SignInFlow } from '../types';
 import { useState } from 'react';
 import { useAuthActions } from '@convex-dev/auth/react'
+import { TriangleAlert } from 'lucide-react';
 
 interface SignInCardProps {
     setState: (state: SignInFlow) => void;
@@ -23,8 +24,8 @@ export const SignInCard = ({ setState }: SignInCardProps) => {
         e.preventDefault();
         setPending(true);
         signIn("password", { email, password, flow: "signIn" })
-        .catch((error) => {
-          setError(error.message);
+        .catch(() => {
+          setError("Invalid username or password");
         })
         .finally(() => setPending(false));
     }
@@ -42,6 +43,13 @@ export const SignInCard = ({ setState }: SignInCardProps) => {
         </CardTitle>
         <CardDescription> Use your email to sign up.</CardDescription>
         </CardHeader>
+        {!!error && (
+            <div className="bg-destructive/15 p-3 rounded-md flex items-center gap-x-2 text-sm text-destructive mb-6">
+            <TriangleAlert className="size-4">
+                <p>{error}</p>
+                </TriangleAlert> 
+            </div>
+        )}
         
         <CardContent className="space-y-5 px-0 pb-0">
             <form className="space-y-2.5">
