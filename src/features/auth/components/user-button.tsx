@@ -14,9 +14,11 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "../../../components/ui/dropdown-menu";
+import { useAuthActions } from "@convex-dev/auth/react";
 
 const UserButton = () => {
     const {isLoading, data } = useCurrentUser();
+    const { signOut } = useAuthActions();
     if(isLoading){
         return <Loader className="size-4 animate-spin text-muted-foreground" />
     };
@@ -42,8 +44,9 @@ const UserButton = () => {
         className="w-40"
         side="right"
       >
-        <DropdownMenuItem>
-            <LogOut />
+        <DropdownMenuItem onClick={() => signOut()} className="h-10">
+            <LogOut className="size-4 mr-2"/>
+            Log out
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
