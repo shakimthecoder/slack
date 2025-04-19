@@ -52,7 +52,7 @@ export const SignInCard = ({ setState }: SignInCardProps) => {
         )}
         
         <CardContent className="space-y-5 px-0 pb-0">
-            <form className="space-y-2.5">
+            <form onSubmit={onPasswordSignIn} className="space-y-2.5">
             <Input 
              disabled={false}
              onChange={(e) => setEmail(e.target.value)}

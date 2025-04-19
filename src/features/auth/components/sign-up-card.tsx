@@ -6,15 +6,30 @@ import { Button } from '../../../components/ui/button';
 import { Separator } from '../../../components/ui/separator';
 import { SignInFlow } from '../types';
 import { useState } from 'react';
+import { TriangleAlert } from 'lucide-react';
+import { useAuthActions } from '@convex-dev/auth/react'
 
 interface SignUpCardProps {
     setState: (state: SignInFlow) => void;
 }
 
 export const SignUpCard = ({ setState }: SignUpCardProps) => {
+    const { signIn } = useAuthActions();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [confirmPassword, setConfirmPassword] = useState("")
+    const [confirmPassword, setConfirmPassword] = useState("");
+    const [pending, setPending] = useState(false);
+    const [error, setError] = useState<string | null>("");
+
+    const onPasswordSignIn = (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        setPending(true);
+        signIn("password", { email, password, flow: "signUp" })
+        .catch(() => {
+          setError("Invalid username or password");
+        })
+        .finally(() => setPending(false));
+    }
 
     return (
        <Card className="w-full h-full p-8">
@@ -24,9 +39,15 @@ export const SignUpCard = ({ setState }: SignUpCardProps) => {
         </CardTitle>
         <CardDescription> Use your email to sign up.</CardDescription>
         </CardHeader>
-        
+        {!!error && (
+            <div className="bg-destructive/15 p-3 rounded-md flex items-center gap-x-2 text-sm text-destructive mb-6">
+            <TriangleAlert className="size-4">
+                <p>{error}</p>
+                </TriangleAlert> 
+            </div>
+        )}
         <CardContent className="space-y-5 px-0 pb-0">
-            <form className="space-y-2.5">
+            <form onSubmit={onPasswordSignIn} className="space-y-2.5">
             <Input 
              disabled={false}
              onChange={(e) => setEmail(e.target.value)}
