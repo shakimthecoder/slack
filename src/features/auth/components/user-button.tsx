@@ -1,7 +1,7 @@
 "use client";
 
 import { useCurrentUser } from "../hooks/use-current-user";
-import { Loader } from "lucide-react";
+import { Loader, LogOut} from "lucide-react";
 
 import {
   Avatar,
@@ -31,7 +31,7 @@ const UserButton = () => {
     <DropdownMenu>
       <DropdownMenuTrigger className="outline-none relative">
         <Avatar className="sz-5 hover:opacity-75 transition">
-          <AvatarImage />
+          <AvatarImage alt={name} src={image} />
           <AvatarFallback>
             {avatarFallback}
           </AvatarFallback>
@@ -43,6 +43,7 @@ const UserButton = () => {
         side="right"
       >
         <DropdownMenuItem>
+            <LogOut />
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
