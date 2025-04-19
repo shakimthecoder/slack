@@ -20,12 +20,21 @@ const UserButton = () => {
     if(isLoading){
         return <Loader className="size-4 animate-spin text-muted-foreground" />
     };
+
+    if(!data){
+        return null;
+    }
+
+    const { image, name, email } = data;
+    const avatarFallback = name!.charAt(0).toUpperCase();
   return (
     <DropdownMenu>
       <DropdownMenuTrigger className="outline-none relative">
         <Avatar className="sz-5 hover:opacity-75 transition">
           <AvatarImage />
-          <AvatarFallback></AvatarFallback>
+          <AvatarFallback>
+            {avatarFallback}
+          </AvatarFallback>
         </Avatar>
       </DropdownMenuTrigger>
       <DropdownMenuContent
