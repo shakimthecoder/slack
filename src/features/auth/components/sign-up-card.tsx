@@ -20,6 +20,7 @@ export const SignUpCard = ({ setState }: SignUpCardProps) => {
     const [confirmPassword, setConfirmPassword] = useState("");
     const [pending, setPending] = useState(false);
     const [error, setError] = useState<string | null>("");
+    const [name, setName] = useState("");
 
     const handleProviderSignUp = (value: "github" | "google") => {
         setPending(true);
@@ -33,9 +34,9 @@ export const SignUpCard = ({ setState }: SignUpCardProps) => {
             setError("Passwords do not match");
         }
         setPending(true);
-        signIn("password", { email, password, flow: "signUp" })
+        signIn("password", { name, email, password, flow: "signUp" })
         .catch(() => {
-          setError("Invalid username or password");
+          setError("Something went wrong");
         })
         .finally(() => setPending(false));
     }
@@ -63,6 +64,13 @@ export const SignUpCard = ({ setState }: SignUpCardProps) => {
              value={email}
              type="email"
              placeholder="Email"
+             required
+             />
+            <Input 
+             disabled={pending}
+             onChange={(e) => setName(e.target.value)}
+             value={name}
+             placeholder="Name"
              required
              />
              <Input 
