@@ -17,7 +17,7 @@ export default function Home() {
       setOpen(true);
       console.log("Open creation modal");
     }
-  }, [workspaceId, isLoading, setOpen]);
+  }, [workspaceId, isLoading, isOpen, setOpen]);
 
   return (
     <div>

@@ -8,6 +8,9 @@ import {
     DialogTitle,
     } from "@/components/ui/dialog";
 
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+
 import { useCreateWorkspaceModal } from "../store/use-create-workspace";
 
 export const CreateWorkspaceModal = () => {
@@ -23,6 +26,21 @@ export const CreateWorkspaceModal = () => {
             <DialogHeader>
                 <DialogTitle>Add a  workspace</DialogTitle>
             </DialogHeader>
+             <form className="space-y-4">
+                <Input 
+                 disabled={false}
+                 value=""
+                 autoFocus
+                 minLength={3}
+                 placeholder="Workspace name e.g. personal, home, work"
+                 required
+                 />
+                 <div className="flex justify-end">
+                    <Button>
+                        Create
+                    </Button>
+                 </div>
+             </form>
          </DialogContent>
         </Dialog>
     )
