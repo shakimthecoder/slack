@@ -10,15 +10,13 @@ export default function Home() {
   const workspaceId = useMemo(() => data?.[0]?._id, [data]);
 
   useEffect(() => {
-    if (isLoading) return null;
+    if (isLoading) return;
     if (workspaceId) {
       console.log("Redirect to workspaces!");
     } else if (!isOpen) {
       setOpen(true);
-       
       console.log("Open creation modal");
     }
-    return undefined;
   }, [workspaceId, isLoading, ]);
 
   return (
