@@ -2,7 +2,7 @@
 import UserButton from "../features/auth/components/user-button";
 import { useGetWorkSpaces } from "@/features/webspaces/api/use-get-workspaces";
 import { useMemo, useEffect } from "react";
-import { useCreateWorkspaceModal } from "../features/store/use-create-workspace";
+import { useCreateWorkspaceModal } from "@/features/webspaces/store/use-create-workspace";
 
 export default function Home() {
   const [isOpen, setOpen] = useCreateWorkspaceModal();
@@ -17,7 +17,7 @@ export default function Home() {
       setOpen(true);
       console.log("Open creation modal");
     }
-  }, [workspaceId, isLoading, ]);
+  }, [workspaceId, isLoading, setOpen]);
 
   return (
     <div>
