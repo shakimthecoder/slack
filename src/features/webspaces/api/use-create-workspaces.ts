@@ -15,10 +15,16 @@ export const useCreateWorkspace = () => {
     const mutation = useMutation(api.workspaces.create);
 
     const mutate = useCallback(async (values: RequestType, options: Options) => {
-        try {}
+        try {
+            const response = await mutation(values);
+            options?.onSuccess?.()
+        }
         catch {
-
+            options?.onError?.()
+        }
+        finally {
+            options?.onSettled?.()
         }
         
-    }, [])
+    }, [mutation])
 }
