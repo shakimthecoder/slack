@@ -1,3 +1,5 @@
+"use client";
+
 import { 
     Dialog,
     DialogContent,
@@ -8,7 +10,7 @@ import {
 
 import { useCreateWorkspaceModal } from "../store/use-create-workspace";
 
-export const createWorkspaceModal = () => {
+export const CreateWorkspaceModal = () => {
     const [open, setOpen] = useCreateWorkspaceModal();
 
     const handleClose = () => {
