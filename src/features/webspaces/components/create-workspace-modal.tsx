@@ -17,7 +17,7 @@ export const CreateWorkspaceModal = () => {
     const [open, setOpen] = useCreateWorkspaceModal();
 
     const handleClose = () => {
-
+      setOpen(false);
     }
 
     return (
