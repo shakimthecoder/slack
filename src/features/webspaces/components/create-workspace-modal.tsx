@@ -8,6 +8,8 @@ import {
     DialogTitle,
     } from "@/components/ui/dialog";
 
+
+
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 
@@ -25,7 +27,8 @@ export const CreateWorkspaceModal = () => {
     const handleSubmit = () => {
         mutate({
             name: "Workspace 1", }, {
-        onSuccess() {
+        onSuccess(data) {
+            router.push("workspaces/")
             //Redirect to workspaceid
         },
         onError: () => {

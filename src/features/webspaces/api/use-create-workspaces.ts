@@ -1,26 +1,28 @@
 import { useMutation } from "convex/react"
 import { api } from '../../../../convex/_generated/api';
+import { Doc, Id} from '../../../../convex/_generated/dataModel';
 import { useCallback } from "react";
 
+type RequestType = { name: string }
+type ResponseType = Doc<"workspaces">;
+
 type Options = {
-    onSuccess?: () => void;
-    onError?: () => void;
+    onSuccess?: (data: Id<"workspaces">) => void;
+    onError?: (error: Error) => void;
     onSettled?: () => void;
 }
 
-type RequestType = any;
-type ResponseType = any;
 
 export const useCreateWorkspace = () => {
     const mutation = useMutation(api.workspaces.create);
 
-    const mutate = useCallback(async (values: RequestType, options: Options) => {
+    const mutate = useCallback(async (values?: RequestType, options?: Options) => {
         try {
             const response = await mutation(values);
-            options?.onSuccess?.()
+            options?.onSuccess?.(response)
         }
-        catch {
-            options?.onError?.()
+        catch(error) {
+            options?.onError?.(error as Error)
         }
         finally {
             options?.onSettled?.()
