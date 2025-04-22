@@ -18,7 +18,7 @@ import { useCreateWorkspace } from "../api/use-create-workspaces";
 
 export const CreateWorkspaceModal = () => {
     const [open, setOpen] = useCreateWorkspaceModal();
-    const { mutate } = useCreateWorkspace();
+    const { mutate, isPending, isError, isSuccess, data, error, isSettled } = useCreateWorkspace();
 
     const handleClose = () => {
       setOpen(false);
@@ -54,6 +54,7 @@ export const CreateWorkspaceModal = () => {
                  minLength={3}
                  placeholder="Workspace name e.g. personal, home, work"
                  required
+                 onChange={()=> {}}
                  />
                  <div className="flex justify-end">
                     <Button>
