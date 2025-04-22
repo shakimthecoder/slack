@@ -24,7 +24,8 @@ export const CreateWorkspaceModal = () => {
       setOpen(false);
     }
     
-    const handleSubmit = () => {
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
         mutate({
             name: "Workspace 1", }, {
         onSuccess(data) {
@@ -48,7 +49,7 @@ export const CreateWorkspaceModal = () => {
             </DialogHeader>
              <form className="space-y-4">
                 <Input 
-                 disabled={false}
+                 disabled={isPending}
                  value=""
                  autoFocus
                  minLength={3}
@@ -57,7 +58,7 @@ export const CreateWorkspaceModal = () => {
                  onChange={()=> {}}
                  />
                  <div className="flex justify-end">
-                    <Button>
+                    <Button disabled={isPending}>
                         Create
                     </Button>
                  </div>
