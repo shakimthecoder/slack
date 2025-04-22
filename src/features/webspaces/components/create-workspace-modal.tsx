@@ -6,6 +6,7 @@ import {
     DialogDescription, 
     DialogHeader, 
     DialogTitle,
+    DialogClose
     } from "@/components/ui/dialog";
 
 
@@ -15,10 +16,13 @@ import { Input } from "@/components/ui/input";
 
 import { useCreateWorkspaceModal } from "../store/use-create-workspace";
 import { useCreateWorkspace } from "../api/use-create-workspaces";
+import { useState } from "react";
+import { DialogTrigger } from "@radix-ui/react-dialog";
 
 export const CreateWorkspaceModal = () => {
     const [open, setOpen] = useCreateWorkspaceModal();
     const { mutate, isPending, isError, isSuccess, data, error, isSettled } = useCreateWorkspace();
+    const [name, setName] = useState<string>("name");
 
     const handleClose = () => {
       setOpen(false);
@@ -36,26 +40,26 @@ export const CreateWorkspaceModal = () => {
 
     return (
         <Dialog open={open} onOpenChange={handleClose}>
-         <DialogContent>
+              <DialogContent>
             <DialogHeader>
                 <DialogTitle>Add a  workspace</DialogTitle>
             </DialogHeader>
              <form onSubmit={handleSubmit} className="space-y-4">
                 <Input 
                  disabled={isPending}
-                 value=""
+                 onChange={(e) => setName(e.target.value)}
+                 value={name}
                  autoFocus
                  minLength={3}
                  placeholder="Workspace name e.g. personal, home, work"
                  required
-                 onChange={()=> {}}
                  />
-                 <div className="flex justify-end">
+                  <div className="flex justify-end">
                     <Button disabled={isPending}>
                         Create
                     </Button>
                  </div>
-             </form>
+                 </form>
          </DialogContent>
         </Dialog>
     )
