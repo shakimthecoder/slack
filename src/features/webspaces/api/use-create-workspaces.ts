@@ -10,6 +10,7 @@ type Options = {
     onSuccess?: (data: Id<"workspaces">) => void;
     onError?: (error: Error) => void;
     onSettled?: () => void;
+    throwError?: boolean;
 }
 
 
@@ -23,6 +24,9 @@ export const useCreateWorkspace = () => {
         }
         catch(error) {
             options?.onError?.(error as Error)
+            if(options?.throwError){
+                throw error;
+            }
         }
         finally {
             options?.onSettled?.()
