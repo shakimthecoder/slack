@@ -26,18 +26,11 @@ export const CreateWorkspaceModal = () => {
     
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        mutate({
-            name: "Workspace 1", }, {
+        mutate({ name, }, {
         onSuccess(data) {
-            router.push("workspaces/")
-            //Redirect to workspaceid
-        },
-        onError: () => {
-         // Show toast error
-        },
-        onSettled: () => {
-         // Reset form
+         console.log(data);
         }
+
         })
     }
 
@@ -47,7 +40,7 @@ export const CreateWorkspaceModal = () => {
             <DialogHeader>
                 <DialogTitle>Add a  workspace</DialogTitle>
             </DialogHeader>
-             <form className="space-y-4">
+             <form onSubmit={handleSubmit} className="space-y-4">
                 <Input 
                  disabled={isPending}
                  value=""
